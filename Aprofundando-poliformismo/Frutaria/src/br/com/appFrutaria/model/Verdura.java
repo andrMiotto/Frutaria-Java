@@ -11,7 +11,7 @@ public class Verdura  extends Produto{
 	}
 
 	public Verdura(String nome, double preco, int quantidade, String tipo) {
-		super();
+		super(nome, preco, quantidade, tipo);
 		this.setTipo(tipo);
 	}
 

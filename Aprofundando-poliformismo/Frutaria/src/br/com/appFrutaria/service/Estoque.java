@@ -13,48 +13,53 @@ public class Estoque {
 		estoque = new ArrayList<>();
 	}
 
-	public void gerenciarEstoque(int opcaoMenuEscolhida, Atendente atendente,Produto produto,Fruta fruta, Verdura verdura) {
+	public void gerenciarMenuPrincipal(int opcaoMenuEscolhida, Atendente atendente, Produto produto, Fruta fruta,
+			Verdura verdura) {
 		switch (opcaoMenuEscolhida) {
 		case 1:
-			String nome = atendente.cadastrarNome();
-			double preco = atendente.cadastrarPreco();
-			int quantidade = atendente.cadastrarQuantidade();
-			String origem = atendente.cadastrarOrigem();
-			produto = new Fruta(nome, preco, quantidade, origem);
-			estoque.add(fruta);
-			System.out.println("Fruta cadastrada com sucesso!");
+			atendente.menuCadastro();
 			break;
 		case 2:
 			atendente.listar(estoque);
 			break;
-		case 3:
+		case 0:
+			atendente.encerrrando();
 			break;
-		case 4:
+
+		}
+	}
+
+	public void gerenciarEstoque(int opcaoMenuCadastro, Atendente atendente) {
+		switch (opcaoMenuCadastro) {
+		case 1:
+			String nome = atendente.cadastrarNomeFruta();
+			double preco = atendente.cadastrarPrecoFruta();
+			int quantidade = atendente.cadastrarQuantidadeFruta();
+			String origem = atendente.cadastrarOrigem();
+			Fruta novaFruta = new Fruta(nome, preco, quantidade, origem);
+			estoque.add(novaFruta);
+			System.out.println("Fruta cadastrada com sucesso!");
 			break;
-		case 5:
-			break;
-		case 6:
+		case 2:
+			nome = atendente.cadastrarNomeVerdura();
+			preco = atendente.cadastrarPrecoVerdura();
+			quantidade = atendente.cadastrarQuantidadeVerdura();
+			String tipo = atendente.cadastrarTipo();
+			Verdura novaVerdura = new Verdura(nome, preco, quantidade, tipo);
+			estoque.add(novaVerdura);
+			System.out.println("Verdura cadastrada com sucesso!");
 			break;
 		case 0:
-			System.out.println("Sistema de Frutaria - Encerrando...");
-			try {
-				Thread.sleep(1500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.exit(0);
-			break;
-		default:
-			System.out.println("Opção inválida!");
+			atendente.encerrrando();
 			break;
 		}
 	}
 
-	public List<Fruta> getEstoque() {
+	public List<Produto> getEstoque() {
 		return estoque;
 	}
 
-	public void setEstoque(List<Fruta> estoque) {
+	public void setEstoque(List<Produto> estoque) {
 		this.estoque = estoque;
 	}
 }

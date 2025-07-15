@@ -31,10 +31,9 @@ public class Atendente {
 
 		return opcaoMenu;
 	}
-	
-	
+
 	public int menuCadastro() {
-		int opcaoMenu;
+		int opcaoMenuCadastro;
 
 		System.out.println("-------- Frutaria --------");
 		System.out.println("");
@@ -44,22 +43,32 @@ public class Atendente {
 		System.out.println("");
 		System.out.print("-------> ");
 
-		opcaoMenu = input.nextInt();
+		opcaoMenuCadastro = input.nextInt();
 		input.nextLine();
-		if (opcaoMenu < 0 || opcaoMenu > 6) {
+		if (opcaoMenuCadastro < 0 || opcaoMenuCadastro > 6) {
 			System.out.println("Código inválido");
 		}
 
-		return opcaoMenu;
+		return opcaoMenuCadastro;
 	}
-	
+
+	public void encerrrando() {
+		System.out.println("Sistema de Frutaria - Encerrando...");
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.exit(0);
+
+	}
 
 	public String cadastrarNomeFruta() {
 		System.out.println("Digite o nome da fruta:");
 		String nome = input.nextLine();
 		return nome;
 	}
-	
+
 	public String cadastrarNomeVerdura() {
 		System.out.println("Digite o nome da verdura:");
 		String nome = input.nextLine();
@@ -72,7 +81,7 @@ public class Atendente {
 		input.nextLine();
 		return preco;
 	}
-	
+
 	public double cadastrarPrecoVerdura() {
 		System.out.println("Digite o preço:");
 		double preco = input.nextDouble();
@@ -86,7 +95,7 @@ public class Atendente {
 		input.nextLine();
 		return quantidade;
 	}
-	
+
 	public int cadastrarQuantidadeVerdura() {
 		System.out.println("Digite a quantidade:");
 		int quantidade = input.nextInt();
@@ -99,7 +108,7 @@ public class Atendente {
 		String origem = input.nextLine();
 		return origem;
 	}
-	
+
 	public String cadastrarTipo() {
 		System.out.println("Digite o tipo:");
 		String tipo = input.nextLine();
@@ -124,4 +133,5 @@ public class Atendente {
 	public void setInput(Scanner input) {
 		this.input = input;
 	}
+
 }
